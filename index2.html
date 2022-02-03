@@ -58,6 +58,7 @@
     <div class="container">
 	    <div class="bottomleft">
 		    <p style="font-family:'Arial'; color:white"> <b><em>celloscope</em> </b></p>
+		    <!-- <button id="speechToTextButton" onclick="getSpeechToText()">speech to text</button> -->
 	    </div>
       <!-- Modal for rendering the charts, declare this if you want to render charts, 
          else you remove the modal -->
@@ -86,13 +87,14 @@
 
         <!--keypad for user to type the message -->
         <div class="keypad">
-          <textarea
+          <!-- <textarea
             id="userInput"
-            placeholder="Type a message..."
+            placeholder="Say something..."
             class="usrInput"
-          ></textarea>
-          <div id="sendButton">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          ></textarea> -->
+          <!-- <div class="holder"> -->
+          <div id="recordButton" aria-disabled="true">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
           </div>
         </div>
       </div>
@@ -126,5 +128,7 @@
     <!--Chart.js Script -->
     <script type="text/javascript" src="static/js/lib/chart.min.js"></script>
     <script type="text/javascript" src="static/js/lib/showdown.min.js"></script>
+    <script type="text/javascript" src="static/js/components/speechToText.js"></script>
+    
   </body>
 </html>
