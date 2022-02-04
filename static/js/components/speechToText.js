@@ -113,9 +113,12 @@ $("#recordButton").unbind('click').click( (e) => {
     // start recorder
     if (!startButton.disabled){
         recorder.start();
+        // startButton.style.backgroundImage = 'linear-gradient(180deg, #ff2038 0%, #ffffff 100%)'
+        document.getElementById('microphone').style = "color:red";
     }
     else{
         recorder.stop();
+        document.getElementById('microphone').style = null;
     }
     
 });
