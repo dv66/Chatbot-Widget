@@ -101,24 +101,52 @@ navigator.mediaDevices.getUserMedia(constraints)
 
 
 
-// function getSpeechToText() {
-// 	console.log("hello !!!  " + window.localStorage.getItem("name"))
-//     window.localStorage.setItem('name', 'Obaseki Nosa');
-// }
+function sendTextForDemo() {
+    const text = $(".usrInput").val();
+    if (text === "" || $.trim(text) === "") {
+        e.preventDefault();
+        return false;
+    }
+    // destroy the existing chart
+    if (typeof chatChart !== "undefined") {
+        chatChart.destroy();
+    }
 
+    $(".chart-container").remove();
+    if (typeof modalChart !== "undefined") {
+        modalChart.destroy();
+    }
+
+    $(".suggestions").remove();
+    $("#paginated_cards").remove();
+    $(".quickReplies").remove();
+    $(".usrInput").blur();
+    $(".dropDownMsg").remove();
+    setUserResponse(text);
+    send(text);
+    e.preventDefault();
+    return false;
+}
 
 
 
 $("#recordButton").unbind('click').click( (e) => {
-    // start recorder
-    if (!startButton.disabled){
-        recorder.start();
-        // startButton.style.backgroundImage = 'linear-gradient(180deg, #ff2038 0%, #ffffff 100%)'
-        document.getElementById('microphone').style = "color:red";
+
+    if ($(".usrInput").val() !== ""){
+        sendTextForDemo();
     }
-    else{
-        recorder.stop();
-        document.getElementById('microphone').style = null;
+
+    else {
+        // start recorder
+        if (!startButton.disabled){
+            recorder.start();
+            // startButton.style.backgroundImage = 'linear-gradient(180deg, #ff2038 0%, #ffffff 100%)'
+            document.getElementById('microphone').style = "color:red";
+        }
+        else{
+            recorder.stop();
+            document.getElementById('microphone').style = null;
+        }
     }
     
 });
